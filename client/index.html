@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+<head>
+  <title>My Favorite Restaurants</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+</head>
+<body>
+  <h1>My Favorite Restaurants</h1>
+  <div ng-view></div>
+  <div>
+    <input ng-model='userInput'>
+    <button class='btn btn-primary'>submit</button>
+    {{ userInput }}
+  </div>
+  <script src="app/services/services.js"></script>
+  <script src="app/login/login.js"></script>
+  <script src="app/app.js"></script>
+</body>
+</html>

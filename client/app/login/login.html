@@ -1,0 +1,15 @@
+<div ng-controller="loginController">
+  <form name="login" novalidate>
+    <label>Username: 
+      <input type="text" name="username" ng-model='username'>
+    </label>    
+    <label>Password: 
+      <input type="password" name="password" ng-model="password">
+    </label>
+    <button class="btn btn-primary" ng-click="signInClient(username, password)">Login</button>
+  <hr>
+    <pre>
+      {{ username }}
+      {{ password }}
+    </pre>
+</div>
