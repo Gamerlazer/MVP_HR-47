@@ -11,15 +11,15 @@ angular.module('search', [])
     console.log('test');
   };
 
-  // $scope.yelpSearch = function (term, location) {
-  //   console.log('got here')
-  //   serverRequests.yelpSearch({
-  //     term: term,
-  //     location: location  
-  //   }).then(function(result) {
-  //       console.log(result);
-  //   });
-  // };
+  $scope.yelpSearch = function (term, location) {
+    console.log('got here');
+    serverRequests.yelpSearch({
+      term: term,
+      location: location  
+    }).then(function(result) {
+        console.log(result);
+    });
+  };
 
   $scope.saveFavorite = function (business) {
     var bizCategories = [];
