@@ -37,10 +37,7 @@ var controller = {
   },
   search: {
     post: function (req, res) {
-      // var bizName = req.body.bizName;
-      // var starRating = req.body.starRating;
-      // var location = req.body.location;
-      console.log(req.body, '<---- BOYD')
+      console.log(req.body, '<---- BOYD');
       var newBiz = {
         bizName: req.body.bizName,
         bizRating: req.body.bizRating,
@@ -66,36 +63,24 @@ var controller = {
   },
   favorites: {
     get: function(req, res) {
-      // var user = util.getUserObj(req);
-      db.User.findOne({username: 'Julie'}).then(function(user) {
-        user.getFavorites().then(function (favorites) {
-          console.log(favorites, 'MY FAVORITES');
-          res.send(favorites);
+      var user = util.getUserObj(req);
+      if (!user) {
+        console.log('NULL USER in GET')
+        res.send({existingUser: false});
+      } else {
+        db.User.findOne({username: user.username}).then(function(user) {
+          if (!user) {
+            res.send({existingUser: false});
+          } else {
+            user.getFavorites().then(function (favorites) {
+              console.log(favorites, 'MY FAVORITES');
+              res.send(favorites);
+            });
+          }
         });
-      });
+      }
     }
   }
 };
 
-
-
-
-/*
-      bizName: business.name,
-      starRating: business.rating,
-      location: business.location.display_address
-
-
-*/
-
-
-
-/*
-
-     db.User.findOne({where: {username: username, password: password}, attributes: ['id']}).then(function(user) {
-        console.log(user.dataValues, 'I FOUND YOU =================================');
-      });
-
-
-*/
 module.exports = controller;
