@@ -6,12 +6,22 @@ angular.module('search', [])
   $scope.logout = function () {
     LogOut();
   };
+
+  $scope.yelpSearch = function (term, location) {
+    console.log('got here')
+    serverRequests.yelpSearch({
+      term: term,
+      location: location  
+    }).then(function(result) {
+        console.log(result);
+    });
+  };
+
   $scope.saveFavorite = function (business) {
     var bizCategories = [];
     business.categories.forEach(function(item) {
         bizCategories.push(item[0]);
     });
-    // console.log(business.location.display_address.join(','), 'location')
     var favBiz = {
       bizName: business.name,
       bizRating: business.rating_img_url_small,
@@ -19,17 +29,7 @@ angular.module('search', [])
       bizImage: business.image_url,
       bizCategories: bizCategories.join(',')
     };
-
     serverRequests.saveFavorite(favBiz);
-  };
-
-  $scope.yelpSearch = function (term, location) {
-    serverRequests.yelpSearch({
-      term: term,
-      location: location  
-    }).then(function(result) {
-        console.log(result);
-    });
   };
 
 
