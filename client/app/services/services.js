@@ -58,14 +58,17 @@ angular.module('services', [])
     });
   };
 
-  var yelpSearch = function(search) {
-    console.log(search, 'my search')
+  var yelpSearch = function(term, location) {
+    console.log(term, location, 'my search');
     return $http({
-      method: 'GET',
+      method: 'POST',
       url: '/api/yelpSearch',
-      data: search
+      data: {term: term, location: location}
     }).then(function(results) {
       console.log(results);
+    })
+    .catch(function (error) {
+      console.log(error, 'ERROR')
     });
   };
 

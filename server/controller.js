@@ -83,10 +83,18 @@ var controller = {
     }
   },
   yelp: {
-    get: function(req, res) {
-      console.log(req);
-
-      res.send(req.body);
+    post: function(req, res) {
+      console.log(req.body, '<<<<<------------- REQUEST ------');
+      var term = req.body.term;
+      var location = req.body.location;
+      yelp.search({term: term, location: location})
+        .then(function (searchResults) {
+          console.log(searchResults, 'SEARCH RESULT');
+          res.send(searchResults);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
 
     /*
     yelp.search({ term: 'food', location: 'Montreal' })
