@@ -3,13 +3,12 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <a href="#/search">Search</a>
-    </div>
-     <div>
       <a ng-click="logout()">Signout</a>
     </div>
   </nav>
-  <div class="favorites panel-body" ng-repeat="favorite in favorites track by $index">
-  {{ favorite }}
+  <div class="list-group" ng-if="!hasFavorites">Please Add Favorites</div>
+  <input ng-model="userFilter">
+  <div class="favorites panel-body" ng-repeat="favorite in favorites | filter:userFilter">
     <ul class="list-group">
       <li class="list-group-item">
         <div>{{ favorite.name }}</div>
@@ -26,28 +25,3 @@
       </li>
     </ul>
 </div>
-
-<!-- 
-
-1
-bizCategories
-:
-"American (New),Brasseries"
-bizImage
-:
-"https://s3-media4.fl.yelpcdn.com/bphoto/uweSiOf0XBB4BPk_ibHVyg/ms.jpg"
-bizLocation
-:
-"500 Brannan St,SoMa,San Francisco, CA 94107"
-bizName
-:
-"Marlowe"
-bizRating
-:
-"https://s3-media4.fl.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png"
-createdAt
-:
-"2
-
-
- -->

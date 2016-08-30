@@ -2,6 +2,7 @@ angular.module('search', [])
 .controller('searchController', function($scope, LogOut, serverRequests) {
 
   $scope.businesses = dataYelp.businesses;
+  
   $scope.logout = function () {
     LogOut();
   };

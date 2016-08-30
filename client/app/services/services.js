@@ -52,10 +52,10 @@ angular.module('services', [])
       method: 'GET',
       url: '/api/favorites'
     }).then(function(favorites) {
-      if (favorites) {
-        return favorites;
-      } else {
+      if (favorites.existingUser === false) {
         return null;
+      } else {
+        return favorites;
       }
     });
   };
@@ -72,5 +72,16 @@ angular.module('services', [])
   return function () {
     $window.localStorage.removeItem('myFavRest');
     $location.path('/login');
+  };
+})
+.factory('DataClean', function () {
+  return function(biz) {
+    return {
+      name: biz.bizName,
+      categories: biz.bizCategories.split(','),
+      displayAddress: biz.bizLocation.split(','),
+      ratingImgUrl: biz.bizRating,
+      bizImage: biz.bizImage
+    };
   };
 });
