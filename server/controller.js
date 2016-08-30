@@ -1,14 +1,21 @@
 var db = require('./db/config');
-var jwt = require('./lib/utiliy');
+var jwt = require('./lib/jwt');
+var util = require('./lib/utiliy');
 
 var controller = {
   signup: {
     post: function (req, res) {
-      console.log('sign up');
-      db.User.create({username: req.body.username, password: req.body.password}).then(function (user) {
-        var token = jwt.encode(user);
-        // res.json({token: token});
-        res.send({token: token});
+      var username = req.body.username;
+      var password = req.body.password;
+      db.User.findOne({usename: username}).then(function(user) {
+        if (user) {
+          res.send({existingUser: true});
+        } else {
+          db.User.create({username: req.body.username, password: req.body.password}).then(function (user) {
+            var token = jwt.encode(user);
+            res.send({token: token});
+          });
+        }
       });
     } 
   },
@@ -16,48 +23,70 @@ var controller = {
     post: function (req, res) {
       var username = req.body.username;
       var password = req.body.password;
-
-      // db.User.findAll({where: {username: username}}).then(function(user){
-      //   console.log('I FOUND YOU', user);
-      // });
       db.User.findOne({where: {username: username, password: password}}).then(function(user) {
-        var token = jwt.encode(user);
-        res.send({token: token});
+        if (!user) {
+          console.log('USERNAME NOT FOUND <-------------- Login');
+          res.send({existingUser: false});
+        } else {
+          console.log('PASSWORD & USERNAME MATCH <-------------- login');
+          var token = jwt.encode(user);
+          res.send({token: token});
+        }
       });
-
-
-      // db.User.findOne({where: {username: req.body.username}}).then(function (user) {
-      //   // console.log(user.dataValues.username, '<----USERFOUND');
-      //   // user.token = jwt.encode(user);
-      //   user.token = jwt.encode(user);
-      //   // console.log(user.token, '<----ENCODED USER');
-      //   // console.log(user.token, '<----ENCODED');
-      //   // console.log(jwt.decode(user.token), '<----DECODED');
-      //   // console.log(user.token, '<----DECODED');
-      //   // console.log(user.token, '<----USER');
-      //   // res.send(user);
-      //   // res.json({user: user, token: token});
-      // });
     }
   },
   search: {
     post: function (req, res) {
-      // console.log(req.body.bizName, 'FAVORITE REST =------------------->');
-      var bizName = req.body.bizName;
-      var token = req.headers['myfavtoken-access-token'];
-      // console.log(token, 'TOKEN <--------------');
-      var username = jwt.decode(token).username;
-      console.log(username, '<---- found user');
-      
-      db.User.findOne({where: {username: username}}).then(function(user) {
-        // db.Favorites.create({bizName: bizName}).then(function (favorite) {
-        console.log(user);
-        // });
-        res.send('favorite post');
+      // var bizName = req.body.bizName;
+      // var starRating = req.body.starRating;
+      // var location = req.body.location;
+      console.log(req.body, '<---- BOYD')
+      var newBiz = {
+        bizName: req.body.bizName,
+        bizRating: req.body.bizRating,
+        bizLocation: req.body.bizLocation,
+        bizImage: req.body.bizImage,
+        bizCategories: req.body.bizCategories
+      };
+
+      var username = util.getUserObj(req).username;
+
+      db.User.findOne({where: {username: username}})
+        .then(function(user) {
+          if ( user ) {
+            db.Favorite.create(newBiz).then(function(favorite) {
+              user.addFavorites([favorite]).then( function(createdAssoc) {
+                console.log('Favorite added');
+              }); 
+            });
+          }
+        });
+      res.send();
+    }
+  },
+  favorites: {
+    get: function(req, res) {
+      // var user = util.getUserObj(req);
+      db.User.findOne({username: 'Julie'}).then(function(user) {
+        user.getFavorites().then(function (favorites) {
+          console.log(favorites, 'MY FAVORITES');
+          res.send(favorites);
+        });
       });
     }
   }
 };
+
+
+
+
+/*
+      bizName: business.name,
+      starRating: business.rating,
+      location: business.location.display_address
+
+
+*/
 
 
 
