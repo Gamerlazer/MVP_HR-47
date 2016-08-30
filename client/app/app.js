@@ -2,7 +2,8 @@ angular.module('app', [
   'ngRoute',
   'login',
   'services',
-  'favorites'
+  'favorites',
+  'search'
 ])
 
 .config(function( $routeProvider, $httpProvider ) {
@@ -13,7 +14,12 @@ angular.module('app', [
     })
     .when('/favorites', {
       templateUrl: 'app/favorites/favorites.html'
+    })
+    .when('/search', {
+      templateUrl: 'app/search/search.html',
+      controller: 'searchController'
     });
+    
   $httpProvider.interceptors.push('AllowCrossOrigin');
 })
 .factory('AllowCrossOrigin', function ($window) {
