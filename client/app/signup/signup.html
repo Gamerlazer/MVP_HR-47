@@ -1,4 +1,5 @@
-<div ng-controller="loginController">
+<div ng-controller="signupController">
+  <div>SIGNUP</div>
   <form name="login" novalidate>
     <label>Username: 
       <input type="text" name="username" ng-model='username'>
@@ -6,7 +7,7 @@
     <label>Password: 
       <input type="password" name="password" ng-model="password">
     </label>
-    <button class="btn btn-primary" ng-click="loginClient(username, password)">Login</button>
+    <button class="btn btn-primary" ng-click="signupClient(username, password)">Login</button>
   <hr>
     <pre>
       {{ username }}

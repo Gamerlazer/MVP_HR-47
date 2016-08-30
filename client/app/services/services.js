@@ -4,7 +4,7 @@ angular.module('services', [])
     console.log('test');
   };
 
-  var signIn = function (username, password) {
+  var login = function (username, password) {
     return $http({
       method: 'POST',
       url: '/api/login',
@@ -13,16 +13,33 @@ angular.module('services', [])
         password: password
       }
     }).then(function (response) {
-      // something with the body of the response
-      // if you return, the promise will be flowed into the next section
-      // console.log(response, 'response from server');
-      return response;
+      return response.data.token;
+    });
+  };
+
+  var signup = function (username, password) {
+    return $http({
+      method: 'POST',
+      url: '/api/signup',
+      data: {
+        username: username,
+        password: password
+      }
+    }).then(function(response) {
+      console.log(response, 'SIGN UP RESPONSE');
+      return response.data.token;
     });
   };
 
   return {
     getRequest: getRequest,
-    signIn: signIn
+    login: login,
+    signup: signup
   };
 
+})
+.factory('LogOut', function($window) {
+  return function () {
+    $window.localStorage.removeItem('myFavRest');
+  };
 });

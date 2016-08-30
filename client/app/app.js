@@ -3,9 +3,9 @@ angular.module('app', [
   'login',
   'services',
   'favorites',
-  'search'
+  'search',
+  'signup'
 ])
-
 .config(function( $routeProvider, $httpProvider ) {
   $routeProvider
     .when('/login', {
@@ -18,18 +18,21 @@ angular.module('app', [
     .when('/search', {
       templateUrl: 'app/search/search.html',
       controller: 'searchController'
+    })
+    .when('/signup', {
+      templateUrl: 'app/signup/signup.html',
+      controller: 'signupController'
     });
-    
-  $httpProvider.interceptors.push('AllowCrossOrigin');
+  $httpProvider.interceptors.push('GrabToken');
 })
-.factory('AllowCrossOrigin', function ($window) {
+.factory('GrabToken', function ($window) {
   return {
     request: function (object) {
-      object.headers['Allow-Control-Allow-Origin'] = '*';
-      // object.headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS';
+      var token = $window.localStorage.getItem('myFavRest');
+      object.headers['myFavToken-access-token'] = token;
       return object;
     }
-  }
+  };
 });
 
 

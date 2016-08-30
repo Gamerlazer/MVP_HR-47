@@ -1,10 +1,11 @@
 angular.module('login', [])
-.controller('loginController', function($scope, serverRequests, $location) {
+.controller('loginController', function($scope, serverRequests, $location, $window) {
 
-  $scope.signInClient = function (username, password) {
-    serverRequests.signIn(username, password)
-    .then(function(response) {
-      console.log(response, 'loginController');
+  $scope.loginClient = function (username, password) {
+    serverRequests.login(username, password)
+    .then(function(token) {
+      $window.localStorage.setItem('myFavRest', token);
+      // console.log(response, 'The response object when I login in');
     });
       // $location.path('/favorites');
     // .then(function(response) {

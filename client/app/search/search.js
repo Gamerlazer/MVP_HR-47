@@ -1,9 +1,35 @@
 angular.module('search', [])
-.controller('searchController', function($scope) {
+.controller('searchController', function($scope, LogOut) {
 
   $scope.businesses = dataYelp.businesses;
-
+  $scope.logout = function () {
+    LogOut();
+  };
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 var dataYelp = {

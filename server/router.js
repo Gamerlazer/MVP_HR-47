@@ -5,14 +5,12 @@ var controller = require('./controller');
 
 // define the different endpoints
 
-router.get('/login/login', function (req, res) {
-  console.log('/api/login');
-  res.send('hi');
-});
 
+router.post('/signup', controller.signup.post);
 
 router.post('/login', controller.login.post);
-router.post('/search', controller.favorite.post);
+
+router.post('/search', controller.search.post);
 
 
 // router.post('/login', function (req, res) {
