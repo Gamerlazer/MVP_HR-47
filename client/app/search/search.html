@@ -1,20 +1,21 @@
 <div ng-controller="searchController">
   <div>Searches</div>
   <div class="business" ng-repeat="business in businesses">
-    <div>{{ business.name }}</div>
-    <img ng-src="{{ business.rating_img_url_small }}">
-    <div class="address">{{ business.name }}
-      <div class="display_address" ng-repeat="line in business.location.display_address">
-        <div>{{ line }}</div>
-        {{ business.location.display_address }}
+    <button>    
+      <div>{{ business.name }}</div>
+      <img ng-src="{{ business.rating_img_url_small }}">
+      <div class="address">
+        <div class="display_address" ng-repeat="line in business.location.display_address">
+          <div class="address_line">{{ line }}</div>
+        </div>
       </div>
-
-    </div>
+    </button>
 </div>
 
 
   <hr>
     <pre>
       {{ businesses }}
+      {{ business.location.display_address }}
       {{ business.rating_img_url_small }}
     </pre>
