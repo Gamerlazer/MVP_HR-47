@@ -1,9 +1,15 @@
 angular.module('login', [])
-.controller('loginController', function($scope, serverRequests) {
+.controller('loginController', function($scope, serverRequests, $location) {
 
   $scope.signInClient = function (username, password) {
-    // console.log($scope.username, $scope.password);
-    serverRequests.signIn(username, password);
+    serverRequests.signIn(username, password)
+    .then(function(response) {
+      console.log(response, 'loginController');
+    });
+      // $location.path('/favorites');
+    // .then(function(response) {
+    //   $location.path('/favorites');
+    // });
   };
 
 

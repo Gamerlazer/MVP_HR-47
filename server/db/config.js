@@ -3,7 +3,7 @@ var Sequelize = require('sequelize');
 // Create Connection
 var sequelize = new Sequelize('main', null, null, {
   dialect: 'sqlite',
-  storage: 'myFavoriteRest.sqlite'
+  storage: 'db/myFavoriteRest.sqlite'
 });
 
 // Define a model on the connection
@@ -21,7 +21,7 @@ Favorites.belongsTo(User);
 User.hasMany(Favorites);
 
 // Create tables, {force: true} <- drops the table if it exists
-User.sync({force: true});
+User.sync();
 Favorites.sync();
 
 exports.User = User;

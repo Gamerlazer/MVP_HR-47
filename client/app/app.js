@@ -1,7 +1,8 @@
 angular.module('app', [
   'ngRoute',
   'login',
-  'services'
+  'services',
+  'favorites'
 ])
 
 .config(function( $routeProvider, $httpProvider ) {
@@ -9,6 +10,9 @@ angular.module('app', [
     .when('/login', {
       templateUrl: 'app/login/login.html',
       controller: 'loginController'
+    })
+    .when('/favorites', {
+      templateUrl: 'app/favorites/favorites.html'
     });
   $httpProvider.interceptors.push('AllowCrossOrigin');
 })
