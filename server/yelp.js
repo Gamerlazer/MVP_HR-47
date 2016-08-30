@@ -32,3 +32,6 @@ yelp.business('yelp-san-francisco', function(err, data) {
   if (err) return console.log(error);
   console.log(data);
 });
+
+
+module.exports = yelp;

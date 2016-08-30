@@ -1,6 +1,7 @@
 var db = require('./db/config');
 var jwt = require('./lib/jwt');
 var util = require('./lib/utiliy');
+var yelp = require('./yelp');
 
 var controller = {
   signup: {
@@ -79,6 +80,27 @@ var controller = {
           }
         });
       }
+    }
+  },
+  yelp: {
+    get: function(req, res) {
+      console.log('get request');
+
+      res.send(req.body);
+
+    /*
+    yelp.search({ term: 'food', location: 'Montreal' })
+    .then(function (data) {
+      console.log(data);
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+    */
+
+
+
+
     }
   }
 };
