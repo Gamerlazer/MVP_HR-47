@@ -19,7 +19,7 @@
   <!-- SEARCH RESULTS -->
   <div class="business panel-body" ng-repeat="business in businesses">
     <ul class="list-group">
-      <li class="list-group-item">
+      <li class="list-group-item" ng-click="saveFavorite(business)">
         <div>{{ business.name }}</div>
         <img ng-src="{{ business.image_url }}">
         <img ng-src="{{ business.rating_img_url_small }}">

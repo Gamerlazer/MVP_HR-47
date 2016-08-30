@@ -31,8 +31,21 @@ angular.module('services', [])
     });
   };
 
+  var saveFavorite = function(business) {
+    return $http({
+      method: 'POST',
+      url: '/api/search',
+      data: business
+    }).then(function (response) {
+      // Passes the data to where it's invoked next
+      return response;
+    });
+  };
+
+
   return {
     getRequest: getRequest,
+    saveFavorite: saveFavorite,
     login: login,
     signup: signup
   };

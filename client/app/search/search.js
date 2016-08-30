@@ -1,9 +1,19 @@
 angular.module('search', [])
-.controller('searchController', function($scope, LogOut) {
+.controller('searchController', function($scope, LogOut, serverRequests) {
 
   $scope.businesses = dataYelp.businesses;
   $scope.logout = function () {
     LogOut();
+  };
+  $scope.saveFavorite = function (business) {
+    var bizName = business.name;
+    var favBiz = {
+      bizName: business.name,
+      starRating: business.rating,
+      location: business.location.display_address
+    };
+    console.log(favBiz, 'BUSINESS');
+    serverRequests.saveFavorite(favBiz);
   };
 });
 
