@@ -12,6 +12,7 @@ router.get('/login/login', function (req, res) {
 
 
 router.post('/login', controller.login.post);
+router.post('/search', controller.favorite.post);
 
 
 // router.post('/login', function (req, res) {

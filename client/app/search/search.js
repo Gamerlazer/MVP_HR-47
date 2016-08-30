@@ -3,8 +3,6 @@ angular.module('search', [])
 
   $scope.businesses = dataYelp.businesses;
 
-
-
 });
 
 
