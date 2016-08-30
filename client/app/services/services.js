@@ -59,6 +59,7 @@ angular.module('services', [])
   };
 
   var yelpSearch = function(search) {
+    console.log(search, 'my search')
     return $http({
       method: 'GET',
       url: '/api/yelpSearch',

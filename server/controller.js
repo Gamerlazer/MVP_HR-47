@@ -84,7 +84,7 @@ var controller = {
   },
   yelp: {
     get: function(req, res) {
-      console.log('get request');
+      console.log(req);
 
       res.send(req.body);
 

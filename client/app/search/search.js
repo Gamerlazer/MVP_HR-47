@@ -12,7 +12,7 @@ angular.module('search', [])
   };
 
   $scope.yelpSearch = function (term, location) {
-    console.log('got here');
+    console.log(term, location);
     serverRequests.yelpSearch({
       term: term,
       location: location  
