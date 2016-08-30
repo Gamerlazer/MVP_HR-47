@@ -8,7 +8,46 @@
       <a ng-click="logout()">Signout</a>
     </div>
   </nav>
-  <div class="favorites"> 
-    {{ favorites }}
-  </div>
+  <div class="favorites panel-body" ng-repeat="favorite in favorites track by $index">
+  {{ favorite }}
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div>{{ favorite.bizName }}</div>
+        <img ng-src="{{ favorite.bizImage }}">
+        <img ng-src="{{ favorite.bizRating }}">
+        <div class="categories" ng-repeat="category in favorite.bizCategories track by $index">
+          {{ category }}
+        </div><br>
+<!--         <div class="address">
+          <div class="display_address" ng-repeat="line in favorite.location.display_address">
+            <div class="address_line">{{ line }}</div>
+          </div>
+        </div>
+ -->      </li>
+    </ul>
 </div>
+
+<!-- 
+
+1
+bizCategories
+:
+"American (New),Brasseries"
+bizImage
+:
+"https://s3-media4.fl.yelpcdn.com/bphoto/uweSiOf0XBB4BPk_ibHVyg/ms.jpg"
+bizLocation
+:
+"500 Brannan St,SoMa,San Francisco, CA 94107"
+bizName
+:
+"Marlowe"
+bizRating
+:
+"https://s3-media4.fl.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png"
+createdAt
+:
+"2
+
+
+ -->

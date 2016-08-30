@@ -10,7 +10,7 @@ angular.module('search', [])
     business.categories.forEach(function(item) {
         bizCategories.push(item[0]);
     });
-    console.log(business.location.display_address.join(','), 'location')
+    // console.log(business.location.display_address.join(','), 'location')
     var favBiz = {
       bizName: business.name,
       bizRating: business.rating_img_url_small,

@@ -7,13 +7,16 @@ angular.module('favorites', [])
   };
   
   $scope.getFavorites = function () {
-    console.log('gothere')
     serverRequests.getFavorites()
       .then(function(favorites) {
         if (!favorites) {
-          console.log('no favorites');
+          console.log('No favorites');
         } else {
-          $scope.favorites = favorites;
+
+          // var cats = favorites.data.bizCategories.split(',')
+          $scope.favorites = favorites.data;
+          console.log(favorites.data[0]);
+          // console.log(cats);
         }
       });
   };
