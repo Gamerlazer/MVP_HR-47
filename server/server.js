@@ -10,10 +10,7 @@ var app = express();
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
-app.use('/api/login', function (req, res) {
-  console.log('request got here');
-  res.send();
-});
+app.use('/api', router);
 
 // send Static files
 app.use(express.static(__dirname + '/../client/'));
