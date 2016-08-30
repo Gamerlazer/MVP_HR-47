@@ -15,19 +15,21 @@
       <input class="form-control" ng-model="userFilter">
     </form>
   <div class="favorites panel-body" ng-repeat="favorite in favorites | filter:userFilter">
-    <ul class="list-group">
-      <li class="list-group-item">
-        <div>{{ favorite.name }}</div>
-        <img ng-src="{{ favorite.bizImage }}">
-        <img ng-src="{{ favorite.ratingImgUrl }}">
-        <div class="categories" ng-repeat="category in favorite.categories track by $index">
-          {{ category }}
-        </div><br>
-        <div class="address">
-          <div class="display_address" ng-repeat="line in favorite.displayAddress">
-            <div class="address_line">{{ line }}</div>
+    <button class="btn btn-lg btn-primary-outline">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div>{{ favorite.name }}</div>
+          <img ng-src="{{ favorite.bizImage }}">
+          <img ng-src="{{ favorite.ratingImgUrl }}">
+          <div class="categories" ng-repeat="category in favorite.categories track by $index">
+            {{ category }}
+          </div><br>
+          <div class="address">
+            <div class="display_address" ng-repeat="line in favorite.displayAddress">
+              <div class="address_line">{{ line }}</div>
+            </div>
           </div>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </button>
 </div>

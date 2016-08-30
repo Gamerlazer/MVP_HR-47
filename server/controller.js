@@ -25,10 +25,8 @@ var controller = {
       var password = req.body.password;
       db.User.findOne({where: {username: username, password: password}}).then(function(user) {
         if (!user) {
-          console.log('USERNAME NOT FOUND <-------------- Login');
           res.send({existingUser: false});
         } else {
-          console.log('PASSWORD & USERNAME MATCH <-------------- login');
           var token = jwt.encode(user);
           res.send({token: token});
         }
@@ -65,7 +63,6 @@ var controller = {
     get: function(req, res) {
       var user = util.getUserObj(req);
       if (!user) {
-        console.log('NULL USER in GET')
         res.send({existingUser: false});
       } else {
         db.User.findOne({username: user.username}).then(function(user) {
@@ -73,7 +70,6 @@ var controller = {
             res.send({existingUser: false});
           } else {
             user.getFavorites().then(function (favorites) {
-              console.log(favorites, 'MY FAVORITES');
               res.send(favorites);
             });
           }
