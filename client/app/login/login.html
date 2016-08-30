@@ -1,4 +1,5 @@
 <div ng-controller="loginController">
+  <h3>Welcome Back! Login Now!</h3>
   <form name="login" novalidate>
     <label>Username: 
       <input type="text" name="username" ng-model='username'>
@@ -7,6 +8,11 @@
       <input type="password" name="password" ng-model="password">
     </label>
     <button class="btn btn-primary" ng-click="loginClient(username, password)">Login</button>
+    <br>
+    <button>
+      <a href="#/signup">Create a new account</a>
+    </button>
+
   <hr>
     <pre>
 <!--       {{ username }}
