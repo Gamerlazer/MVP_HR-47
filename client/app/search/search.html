@@ -16,20 +16,24 @@
   </form>
 
   <!-- SEARCH RESULTS -->
-  <div class="business panel-body" ng-repeat="business in businesses | filter:userSearch ">
-    <ul class="list-group">
-      <li class="list-group-item" ng-click="saveFavorite(business)">
-        <div>{{ business.name }}</div>
-        <img ng-src="{{ business.image_url }}">
-        <img ng-src="{{ business.rating_img_url_small }}">
-        <div class="categories" ng-repeat="category in business.categories">
-          {{ category[0] }}
-        </div><br>
-        <div class="address">
-          <div class="display_address" ng-repeat="line in business.location.display_address">
-            <div class="address_line">{{ line }}</div>
+  <div class="btn-group" ng-repeat="business in businesses | filter:userSearch ">
+    <button class="btn btn-lg btn-primary-outline btn-default" ng-click="saveFavorite(business)">
+      <ul class="list-group">
+        <li class="biz list-group-item" >
+          <div>{{ business.name }}</div>
+          <img ng-src="{{ business.image_url }}">
+          <img ng-src="{{ business.rating_img_url_small }}">
+          <br>
+          <span class="categories" ng-repeat="category in business.categories">
+            {{ category[0] }}
+          </span>
+          <br>
+          <div class="address">
+            <div class="display_address" ng-repeat="line in business.location.display_address">
+              <div class="address_line">{{ line }}</div>
+            </div>
           </div>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </button>
 </div>

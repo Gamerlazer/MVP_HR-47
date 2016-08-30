@@ -28,10 +28,8 @@ angular.module('services', [])
       }
     }).then(function(response) {
       if (response.data.existingUser) {
-        console.log('user exists');
         $location.path('/login');
       } else {
-        console.log('new user');
         return response.data.token;
       }
     });

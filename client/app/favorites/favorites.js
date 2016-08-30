@@ -14,7 +14,6 @@ angular.module('favorites', [])
         if (!favorites) {
           console.log('No favorites');
         } else {
-          console.log(favorites);
           $scope.hasFavorites = true;
           favorites.data.forEach(function(biz) {
             $scope.favorites.push(DataClean(biz));
