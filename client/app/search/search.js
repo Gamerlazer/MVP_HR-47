@@ -1,11 +1,12 @@
 angular.module('search', [])
 .controller('searchController', function($scope) {
-  // $scope.data = dataYelp;
-  // $scope.test = dataYelp.businesses[0].name;
+
   $scope.businesses = dataYelp.businesses;
+
+
+
 });
 
-var testing = {name: 'Julie'}
 
 var dataYelp = {
     "region": {
