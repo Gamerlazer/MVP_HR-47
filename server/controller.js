@@ -42,9 +42,11 @@ var controller = {
   },
   search: {
     post: function (req, res) {
+      console.log(req.body, 'FAVORITE REST =------------------->');
       var token = req.headers['myfavtoken-access-token'];
       var username = jwt.decode(token).username;
-      db.findOne({where: {username: username}}).then(function(user) {
+      console.log(username, 'TOKEN <--------------');
+      db.User.findOne({where: {username: username}}).then(function(user) {
         console.log(user, '<---- found user');
         res.send('favorite post');
       });

@@ -13,7 +13,7 @@ var User = sequelize.define('User', {
 });
 
 var Favorites = sequelize.define('Favorites', {
-  restaurant: Sequelize.STRING
+  restaurantName: Sequelize.STRING
 });
 
 // Create Associations
