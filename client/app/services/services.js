@@ -58,7 +58,19 @@ angular.module('services', [])
     });
   };
 
+  var yelpSearch = function(search) {
+    return $http({
+      method: 'GET',
+      url: '/api/yelpSearch',
+      data: search
+    }).then(function(results) {
+      console.log(results);
+    });
+  };
+
+
   return {
+    yelpSearch: yelpSearch,
     saveFavorite: saveFavorite,
     getFavorites: getFavorites,
     login: login,

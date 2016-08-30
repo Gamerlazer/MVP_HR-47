@@ -22,6 +22,18 @@ angular.module('search', [])
 
     serverRequests.saveFavorite(favBiz);
   };
+
+  $scope.yelpSearch = function (term, location) {
+    serverRequests.yelpSearch({
+      term: term,
+      location: location  
+    }).then(function(result) {
+        console.log(result);
+    });
+  };
+
+
+
 });
 
 
