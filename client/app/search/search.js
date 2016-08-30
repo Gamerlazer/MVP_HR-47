@@ -7,20 +7,24 @@ angular.module('search', [])
     LogOut();
   };
 
-  $scope.yelpSearch = function (term, location) {
-    console.log('got here')
-    serverRequests.yelpSearch({
-      term: term,
-      location: location  
-    }).then(function(result) {
-        console.log(result);
-    });
+  $scope.test = function () {
+    console.log('test');
   };
+
+  // $scope.yelpSearch = function (term, location) {
+  //   console.log('got here')
+  //   serverRequests.yelpSearch({
+  //     term: term,
+  //     location: location  
+  //   }).then(function(result) {
+  //       console.log(result);
+  //   });
+  // };
 
   $scope.saveFavorite = function (business) {
     var bizCategories = [];
     business.categories.forEach(function(item) {
-        bizCategories.push(item[0]);
+      bizCategories.push(item[0]);
     });
     var favBiz = {
       bizName: business.name,

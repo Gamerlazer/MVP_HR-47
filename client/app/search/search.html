@@ -11,6 +11,13 @@
 <div ng-controller="searchController" class="panel panel-default panel-fluid">
 
   <!-- SEARCH BAR -->
+  <form name="yelp">
+    <input name="yelpTerm" ng-model="term">
+    <input name="yelpLocation" ng-model="location">
+    <button ng-click="test()">Search</button> 
+  </form>
+
+
   <form class="input-group">
     <span class="input-group-addon">Filter</span>
     <input class="form-control" ng-model="userSearch">
