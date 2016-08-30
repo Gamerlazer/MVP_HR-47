@@ -12,18 +12,18 @@
   {{ favorite }}
     <ul class="list-group">
       <li class="list-group-item">
-        <div>{{ favorite.bizName }}</div>
+        <div>{{ favorite.name }}</div>
         <img ng-src="{{ favorite.bizImage }}">
-        <img ng-src="{{ favorite.bizRating }}">
-        <div class="categories" ng-repeat="category in favorite.bizCategories track by $index">
+        <img ng-src="{{ favorite.ratingImgUrl }}">
+        <div class="categories" ng-repeat="category in favorite.categories track by $index">
           {{ category }}
         </div><br>
-<!--         <div class="address">
-          <div class="display_address" ng-repeat="line in favorite.location.display_address">
+        <div class="address">
+          <div class="display_address" ng-repeat="line in favorite.displayAddress">
             <div class="address_line">{{ line }}</div>
           </div>
         </div>
- -->      </li>
+      </li>
     </ul>
 </div>
 
