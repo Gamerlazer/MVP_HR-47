@@ -19,29 +19,6 @@ angular.module('search', [])
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var dataYelp = {
     "region": {
         "span": {

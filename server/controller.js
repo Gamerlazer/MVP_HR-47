@@ -42,12 +42,17 @@ var controller = {
   },
   search: {
     post: function (req, res) {
-      console.log(req.body, 'FAVORITE REST =------------------->');
+      // console.log(req.body.bizName, 'FAVORITE REST =------------------->');
+      var bizName = req.body.bizName;
       var token = req.headers['myfavtoken-access-token'];
+      // console.log(token, 'TOKEN <--------------');
       var username = jwt.decode(token).username;
-      console.log(username, 'TOKEN <--------------');
+      console.log(username, '<---- found user');
+      
       db.User.findOne({where: {username: username}}).then(function(user) {
-        console.log(user, '<---- found user');
+        // db.Favorites.create({bizName: bizName}).then(function (favorite) {
+        console.log(user);
+        // });
         res.send('favorite post');
       });
     }
