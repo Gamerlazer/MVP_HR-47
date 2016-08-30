@@ -7,11 +7,14 @@ var controller = {
     post: function (req, res) {
       var username = req.body.username;
       var password = req.body.password;
-      db.User.findOne({usename: username}).then(function(user) {
+      console.log(username, password, '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
+      db.User.findOne({where: {username: username}}).then(function(user) {
         if (user) {
+          console.log('USER EXISTS <----------------', user);       
           res.send({existingUser: true});
         } else {
           db.User.create({username: req.body.username, password: req.body.password}).then(function (user) {
+            console.log('user created! <----------------', user);
             var token = jwt.encode(user);
             res.send({token: token});
           });
@@ -65,10 +68,11 @@ var controller = {
       if (!user) {
         res.send({existingUser: false});
       } else {
-        db.User.findOne({username: user.username}).then(function(user) {
+        db.User.findOne({where: {username: user.username}}).then(function(user) {
           if (!user) {
             res.send({existingUser: false});
           } else {
+            console.log(user, '<----------- CURRENT USER');
             user.getFavorites().then(function (favorites) {
               res.send(favorites);
             });
