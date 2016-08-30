@@ -8,7 +8,8 @@ var sequelize = new Sequelize('main', null, null, {
 
 // Define a model on the connection
 var User = sequelize.define('User', {
-  username: Sequelize.STRING
+  username: Sequelize.STRING,
+  password: Sequelize.STRING
 });
 
 var Favorites = sequelize.define('Favorites', {
@@ -20,7 +21,7 @@ Favorites.belongsTo(User);
 User.hasMany(Favorites);
 
 // Create tables, {force: true} <- drops the table if it exists
-User.sync();
+User.sync({force: true});
 Favorites.sync();
 
 exports.User = User;

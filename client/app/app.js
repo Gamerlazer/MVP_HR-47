@@ -16,6 +16,7 @@ angular.module('app', [
   return {
     request: function (object) {
       object.headers['Allow-Control-Allow-Origin'] = '*';
+      // object.headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS';
       return object;
     }
   }
