@@ -4,14 +4,12 @@ angular.module('login', [])
   $scope.loginClient = function (username, password) {
     serverRequests.login(username, password)
     .then(function(token) {
-      $window.localStorage.setItem('myFavRest', token);
-      // console.log(response, 'The response object when I login in');
+      if (!token) {
+        $location.path('/signup');
+      } else if (token) {
+        $window.localStorage.setItem('myFavRest', token);
+        $location.path('/favorites');
+      }
     });
-      // $location.path('/favorites');
-    // .then(function(response) {
-    //   $location.path('/favorites');
-    // });
   };
-
-
 });

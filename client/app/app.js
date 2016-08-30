@@ -13,7 +13,8 @@ angular.module('app', [
       controller: 'loginController'
     })
     .when('/favorites', {
-      templateUrl: 'app/favorites/favorites.html'
+      templateUrl: 'app/favorites/favorites.html',
+      controller: 'favoritesController'
     })
     .when('/search', {
       templateUrl: 'app/search/search.html',
@@ -22,7 +23,8 @@ angular.module('app', [
     .when('/signup', {
       templateUrl: 'app/signup/signup.html',
       controller: 'signupController'
-    });
+    })
+    .otherwise({redirectTo: '/login'});
   $httpProvider.interceptors.push('GrabToken');
 })
 .factory('GrabToken', function ($window) {

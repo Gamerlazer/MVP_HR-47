@@ -1,8 +1,5 @@
 angular.module('services', [])
-.factory('serverRequests', function($http) {
-  var getRequest = function () {
-    console.log('test');
-  };
+.factory('serverRequests', function($http, $location, $rootScope) {
 
   var login = function (username, password) {
     return $http({
@@ -13,7 +10,11 @@ angular.module('services', [])
         password: password
       }
     }).then(function (response) {
-      return response.data.token;
+      if (response.data.token) {
+        return response.data.token;
+      } else if (!response.data.existingUser) {
+        return null;
+      }
     });
   };
 
@@ -26,8 +27,13 @@ angular.module('services', [])
         password: password
       }
     }).then(function(response) {
-      console.log(response, 'SIGN UP RESPONSE');
-      return response.data.token;
+      if (response.data.existingUser) {
+        console.log('user exists');
+        $location.path('/login');
+      } else {
+        console.log('new user');
+        return response.data.token;
+      }
     });
   };
 
@@ -37,22 +43,34 @@ angular.module('services', [])
       url: '/api/search',
       data: business
     }).then(function (response) {
-      // Passes the data to where it's invoked next
       return response;
     });
   };
 
+  var getFavorites = function () {
+    return $http({
+      method: 'GET',
+      url: '/api/favorites'
+    }).then(function(favorites) {
+      if (favorites) {
+        return favorites;
+      } else {
+        return null;
+      }
+    });
+  };
 
   return {
-    getRequest: getRequest,
     saveFavorite: saveFavorite,
+    getFavorites: getFavorites,
     login: login,
     signup: signup
   };
 
 })
-.factory('LogOut', function($window) {
+.factory('LogOut', function($window, $location) {
   return function () {
     $window.localStorage.removeItem('myFavRest');
+    $location.path('/login');
   };
 });

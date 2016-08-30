@@ -1,11 +1,14 @@
-<div>Favorites</div>
+<div ng-controller="favoritesController">Favorites
 <!-- HEADER BAR -->
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <a href="#/search">Search</a>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <a href="#/search">Search</a>
+    </div>
+     <div>
+      <a ng-click="logout()">Signout</a>
+    </div>
+  </nav>
+  <div class="favorites"> 
+    {{ favorites }}
   </div>
-   <div>
-    <a ng-click="logout()">Signout</a>
-  </div>
-</nav>
+</div>

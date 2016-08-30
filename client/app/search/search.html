@@ -9,6 +9,7 @@
   </div>
 </nav>
 
+
 <div ng-controller="searchController" class="panel panel-default">
   <!-- SEARCH BAR -->
   <form>
@@ -17,12 +18,17 @@
   </form>
 
   <!-- SEARCH RESULTS -->
-  <div class="business panel-body" ng-repeat="business in businesses">
+  <div class="business panel-body" ng-repeat="business in businesses | filter:userSearch ">
+  {{ userSearch }}
+
     <ul class="list-group">
       <li class="list-group-item" ng-click="saveFavorite(business)">
         <div>{{ business.name }}</div>
         <img ng-src="{{ business.image_url }}">
         <img ng-src="{{ business.rating_img_url_small }}">
+        <div class="categories" ng-repeat="category in business.categories">
+          {{ category[0] }}
+        </div><br>
         <div class="address">
           <div class="display_address" ng-repeat="line in business.location.display_address">
             <div class="address_line">{{ line }}</div>

@@ -4,7 +4,8 @@ angular.module('signup', [])
   $scope.signupClient = function (username, password) {
     serverRequests.signup(username, password)
     .then(function(token) {
-      $window.localStorage.setItem('myFavRest', token);
+      // $window.localStorage.setItem('myFavRest', token);
+      // $location.path('/search');
     });
   };
 
