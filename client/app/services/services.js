@@ -45,6 +45,13 @@ angular.module('services', [])
     });
   };
 
+  // var removeFavorite = function(business) {
+  //   return $http({
+  //     method: 'DELETE',
+      
+  //   })
+  // }
+
   var getFavorites = function () {
     return $http({
       method: 'GET',
