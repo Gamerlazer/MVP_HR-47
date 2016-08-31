@@ -1,7 +1,7 @@
 angular.module('search', [])
 .controller('searchController', function($scope, LogOut, serverRequests) {
 
-  $scope.businesses = dataYelp.businesses;
+  // $scope.businesses = dataYelp.businesses;
   
   $scope.logout = function () {
     LogOut();
@@ -13,8 +13,9 @@ angular.module('search', [])
 
   $scope.yelpSearch = function (term, location) {
     serverRequests.yelpSearch(term, location)
-        .then(function(result) {
-            console.log(result);
+      .then(function(result) {
+        console.log(result.data.businesses, '<============SEARCH=======');
+      $scope.businesses = result.data.businesses;
     });
   };
 
@@ -36,6 +37,9 @@ angular.module('search', [])
 
 
 });
+
+
+
 
 
 

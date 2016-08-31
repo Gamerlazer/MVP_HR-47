@@ -65,10 +65,7 @@ angular.module('services', [])
       url: '/api/yelpSearch',
       data: {term: term, location: location}
     }).then(function(results) {
-      console.log(results);
-    })
-    .catch(function (error) {
-      console.log(error, 'ERROR')
+      return results;
     });
   };
 
