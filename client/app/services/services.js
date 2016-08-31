@@ -92,7 +92,8 @@ angular.module('services', [])
       categories: biz.bizCategories.split(','),
       displayAddress: biz.bizLocation.split(','),
       ratingImgUrl: biz.bizRating,
-      bizImage: biz.bizImage
+      bizImage: biz.bizImage,
+      bizYelpId: biz.bizYelpId
     };
   };
 });
