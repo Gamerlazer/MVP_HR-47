@@ -14,13 +14,13 @@ angular.module('search', [])
   $scope.yelpSearch = function (term, location) {
     serverRequests.yelpSearch(term, location)
       .then(function(result) {
-        console.log(result.data.businesses, '<============SEARCH=======');
       $scope.businesses = result.data.businesses;
     });
   };
 
   $scope.saveFavorite = function (business) {
     var bizCategories = [];
+    console.log(business.id);
     business.categories.forEach(function(item) {
       bizCategories.push(item[0]);
     });
@@ -29,16 +29,13 @@ angular.module('search', [])
       bizRating: business.rating_img_url_small,
       bizLocation: business.location.display_address.join(','),
       bizImage: business.image_url,
-      bizCategories: bizCategories.join(',')
+      bizCategories: bizCategories.join(','),
+      bizYelpId: business.id
     };
     serverRequests.saveFavorite(favBiz);
   };
 
 });
-
-
-
-
 
 
 var dataYelp = {

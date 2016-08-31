@@ -17,7 +17,10 @@
     </form>
     <div class="text-center">
       <div class="favorites btn-group" ng-repeat="favorite in favorites | filter:userFilter">
-        <button class="btn btn-lg btn-primary-outline btn-default">
+
+
+
+        <button class="btn btn-lg btn-primary-outline btn-default" ng-click="test(favorite)">
           <ul class="list-group">
             <li class="biz list-group-item">
               <div>{{ favorite.name }}</div>
@@ -36,6 +39,8 @@
             </li>
           </ul>
         </button>
+
+
       </div>  
     </div>
 </div>

@@ -28,6 +28,7 @@ var Favorite = sequelize.define('Favorite', {
   bizRating: Sequelize.STRING,
   bizImage: Sequelize.STRING,
   bizCategories: Sequelize.STRING,
+  bizYelpId: Sequelize.STRING,
 });
 
     

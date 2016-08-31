@@ -8,6 +8,14 @@ angular.module('favorites', [])
     LogOut();
   };
   
+  $scope.test = function(favorite) {
+    console.log(favorite, '<-------- favorite clicked');
+  };
+
+
+
+
+
   $scope.getFavorites = function () {
     serverRequests.getFavorites()
       .then(function(favorites) {
