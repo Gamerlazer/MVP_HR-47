@@ -30,7 +30,7 @@
   <!-- SEARCH RESULTS -->
   <div class="container-fluid text-center">
     <div class="btn-group" ng-repeat="business in businesses | filter:userSearch ">
-      <button class="btn btn-lg btn-primary-outline btn-default" ng-click="saveFavorite(business)">
+      <button class="btn btn-lg btn-primary-outline btn-default" ng-dblclick="saveFavorite(business)" ng-click=(showDescription(business))>
         <ul class="list-group">
           <li class="biz list-group-item" >
             <div>{{ business.name }}</div>

@@ -85,7 +85,6 @@ var controller = {
       var location = req.body.location;
       yelp.search({term: term, location: location})
         .then(function (searchResults) {
-          console.log(searchResults, 'SEARCH RESULT');
           res.send(searchResults);
         })
         .catch(function (error) {

@@ -7,15 +7,16 @@ angular.module('search', [])
     LogOut();
   };
 
-  $scope.test = function () {
-    console.log('test');
+  $scope.showDescription = function (business) {
+    var description = business.snippet_text;
+    console.log(description);
   };
 
   $scope.yelpSearch = function (term, location) {
     serverRequests.yelpSearch(term, location)
       .then(function(result) {
-      $scope.businesses = result.data.businesses;
-    });
+        $scope.businesses = result.data.businesses;
+      });
   };
 
   $scope.saveFavorite = function (business) {
