@@ -1,53 +1,48 @@
 <h3>Searches!</h3>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <ul class="nav nav-pills nav-justified">
-      <li><a href="#/favorites">My Favorites</a></li>
-      <li><a ng-click="logout()">Signout</a></li>
-    </ul>
-  </div>
-</nav>
+<div class="nav-container">
+  <ul class="">
+    <li><a href="#/favorites">My Favorites</a></li>
+    <li><a ng-click="logout()">Signout</a></li>
+  </ul>
+</div>
 
 <div ng-controller="searchController" class="panel panel-default panel-fluid">
 
   <!-- SEARCH BAR -->
-  <form name="yelp" class="input-group">
-    <label> Category:
-      <input name="yelpTerm" ng-model="term">
-    </label>
-    <label> City:
-      <input name="yelpLocation" ng-model="location">
-    </label>
-    <button ng-click="yelpSearch(term, location)">Search</button> 
-  </form>
+  <div class="search-container"> 
+    <form name="yelp" class="search">
+      <label for="category">Category:</label>
+      <input name="yelpTerm" id="category" ng-model="term">
+      <label for="city">City:</label>
+      <input name="yelpLocation" id="city" ng-model="location">
+      <button ng-click="yelpSearch(term, location)">Search</button> 
+    </form>
+  </div>
 
-
-  <form class="input-group">
-    <span class="input-group-addon">Filter</span>
-    <input class="form-control" ng-model="userSearch">
-  </form>
+  <div class="filter-container"> 
+    <form class="filter">
+      <label>Filter</label>
+      <input ng-model="userSearch">
+    </form>
+  </div>
 
   <!-- SEARCH RESULTS -->
-  <div class="container-fluid text-center">
-    <div class="btn-group" ng-repeat="business in businesses | filter:userSearch ">
-      <button class="btn btn-lg btn-primary-outline btn-default" ng-dblclick="saveFavorite(business)" ng-click=(showDescription(business))>
-        <ul class="list-group">
-          <li class="biz list-group-item" >
-            <div>{{ business.name }}</div>
-            <img ng-src="{{ business.image_url }}">
-            <img ng-src="{{ business.rating_img_url_small }}">
-            <br>
-            <span class="categories" ng-repeat="category in business.categories">
-              {{ category[0] }}
-            </span>
-            <br>
-            <div class="address">
-              <div class="display_address" ng-repeat="line in business.location.display_address">
-                <div class="address_line">{{ line }}</div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </button>
+  <div class="results-container">
+    <div class="business-card" ng-dblclick="saveFavorite(business)" ng-click=(showDescription(business)) ng-repeat="business in businesses | filter:userSearch ">
+      <ul class="list-group">
+        <div class="business-name">{{ business.name }}</div>
+        <div class="business-images"> 
+          <img ng-src="{{ business.image_url }}">          
+          <img ng-src="{{ business.rating_img_url_small }}">
+        </div>
+        <div class="business-categories" ng-repeat="category in business.categories">
+          {{ category[0] }}
+        </div>
+        <div class="busines-address">
+          <div class="display_address" ng-repeat="line in business.location.display_address">
+            <div class="address_line">{{ line }}</div>
+          </div>
+        </div>
+      </ul>
     </div>
 </div>

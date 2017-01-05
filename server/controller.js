@@ -13,7 +13,10 @@ var controller = {
           res.send({existingUser: true});
         } else {
           db.User.create({username: req.body.username, password: req.body.password}).then(function (user) {
-            var token = jwt.encode(user);
+            var token = jwt.encode({ 
+              userId: user.dataValues.id,
+              username: user.dataValues.username
+            });
             res.send({token: token});
           });
         }
@@ -28,7 +31,10 @@ var controller = {
         if (!user) {
           res.send({existingUser: false});
         } else {
-          var token = jwt.encode(user);
+          var token = jwt.encode({ 
+            userId: user.dataValues.id,
+            username: user.dataValues.username
+          });
           res.send({token: token});
         }
       });
