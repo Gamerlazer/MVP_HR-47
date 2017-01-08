@@ -4,27 +4,33 @@ angular.module('app', [
   'services',
   'favorites',
   'search',
-  'signup'
+  'signup',
+  'ui.router'
 ])
-.config(function( $routeProvider, $httpProvider ) {
-  $routeProvider
-    .when('/login', {
+.config(function($stateProvider, $httpProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('/login', {
+      url: '/login',
       templateUrl: 'app/login/login.html',
       controller: 'loginController'
     })
-    .when('/favorites', {
+    .state('/favorites', {
+      url: '/favorites',
       templateUrl: 'app/favorites/favorites.html',
       controller: 'favoritesController'
     })
-    .when('/search', {
+    .state('/search', {
+      url: '/search',
       templateUrl: 'app/search/search.html',
       controller: 'searchController'
     })
-    .when('/signup', {
+    .state('/signup', {
+      url: '/signup',
       templateUrl: 'app/signup/signup.html',
       controller: 'signupController'
     })
-    .otherwise({redirectTo: '/login'});
+
+  $urlRouterProvider.otherwise('/login');
   $httpProvider.interceptors.push('GrabToken');
 })
 .factory('GrabToken', function ($window) {

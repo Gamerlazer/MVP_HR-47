@@ -12,10 +12,6 @@ angular.module('favorites', [])
     console.log(favorite, '<-------- favorite clicked');
   };
 
-
-
-
-
   $scope.getFavorites = function () {
     serverRequests.getFavorites()
       .then(function(favorites) {
@@ -23,6 +19,7 @@ angular.module('favorites', [])
           console.log('No favorites');
         } else {
           $scope.hasFavorites = true;
+          console.log(favorites, 'THE FAVORITES')
           favorites.data.forEach(function(biz) {
             $scope.favorites.push(DataClean(biz));
           });

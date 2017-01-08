@@ -1,10 +1,23 @@
+:root {
+  --filter-min-width: 65vw;
+}
+
 button {
   height: 100%;
+}
+.nav {
+  display: flex;
+  align-content: center;
+  background-color: rgb(83, 101, 238);
+  text-shadow: 1px 1px 2px darkgrey;
+  border: 1px solid lightgrey;
 }
 
 .logo {
   padding-left: 1vw;
   min-height: 5vh;
+  font-family: 'Dancing Script', cursive;
+  font-size: 35px;
 }
 
 li.biz {
@@ -14,18 +27,25 @@ li.biz {
 
 .login-container {
   /*border: 1px solid black;*/
+  background-image: url('../assets/purple-grapes-vineyard-napa-valley-napa-vineyard-39351.jpeg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   padding: 5vh;
   min-height: 95vh;
+  font-family: 'sans-serif';
+  color: black;
+  text-shadow: 1px 1px 2px darkgrey;
 }
 
 .login {
   padding: 5vh;
   max-width: 65vw;
-  border: 1px solid lightgrey;
+  border: 2px solid lightgrey;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -45,6 +65,25 @@ li.biz {
   margin: 2px 0px;
   box-shadow: 1px 1px black;
   text-decoration: none;
+  font-size: 20px;
+}
+
+.login button:first-of-type {
+  background-color: rgba(83, 101, 238, 0.89);
+}
+
+.login button:last-of-type {
+  background-color: rgba(149, 151, 171, 0.89);
+  color: black;
+}
+
+.login button:last-of-type > a { 
+  color: white;
+}
+
+.login label {
+  font-size: 20px;
+  letter-spacing: 1px;
 }
 
 .login-input {
@@ -62,20 +101,17 @@ li.biz {
 .search-container {
   display: flex;
   justify-content: space-around;
+  min-width: var(--filter-min-width)
 }
 
 .search button {
   border: 1px solid lightgrey;
   border-radius: 5px;
-  background-color: lightblue;
+  background-color: rgba(83, 101, 238, 0.89);
   color: white;
   margin: 6px;
   max-width: 230px;
   max-height: 34px;
-}
-
-.search label {
-
 }
 
 .search input {
@@ -87,15 +123,21 @@ li.biz {
 .filter-container {
   display: flex;
   justify-content: space-around;
+  align-items: stretch;
+  flex-grow: 1;
 }
 
 .filter input {
   min-height: 36px;
-  min-width: 75vw;
+  min-width: 56vw;
   margin: 6px;
 }
 
 .results-container {
+  background-image: url('../assets/purple-grapes-vineyard-napa-valley-napa-vineyard-39351.jpeg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   display: flex;
   border-radius: 5px;
   flex-wrap: wrap;
@@ -106,46 +148,55 @@ li.biz {
 .business-card {
   display: flex;
   justify-content: center;
-  border-radius: 5px;
+  border-radius: 12px;
   padding: 10px;
   margin: 10px;
   border: 1px solid lightgrey;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  min-width: 20vw;
 }
 
-.business-card ul > * {
+.business-card div > div {
   display: flex;
-  /*justify-content: space-between;*/
   flex-direction: column;
-  flex-flow: row nowrap;
   align-items: center;
+  justify-content: space-around;
+}
+
+.list-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .business-name {
+  align-self: center; 
+  align-items: center;
   text-align: center;
   font-size: 18px;
 }
 
 .business-address {
-  text-align: center;
+  align-self: flex-end; 
+  align-content: center;
+}
+
+.display_address {
+  font-style: italic; 
+}
+
+.business-images > * { 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 
-/*.business-images { 
-  flex: 0 0 auto;
-  flex-direction: column;
-}*/
-
-
-.business-images img{
-  margin: 0 5px;
-  /*text-align: center;*/
-  /*margin: auto;*/
-  /*align-content: center;*/
-  /*flex: 0 0 auto;*/
-  /*max-width: 100%;*/
-/*  max-height: 100%;
-  justify-content: space-around;*/
+.business-images img {
+  flex-direction: row;
+  margin: 5px 5px;
 }
 
 /*img.business {
@@ -154,4 +205,30 @@ li.biz {
 
 img {
   max-width: 100%;
+}
+
+.nav-container {
+  display: flex;
+}
+
+.nav-container > div {
+  margin: 0 2vw;
+  padding: 3px;
+  align-content: flex-end;
+  font-size: 18px;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Dancing Script', cursive;
+  /*border: 0.5px solid lightgrey;*/
+}
+
+.section-head > h3 {
+  margin: 0 7vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

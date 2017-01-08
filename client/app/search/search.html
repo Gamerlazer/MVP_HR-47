@@ -1,9 +1,9 @@
-<h3>Searches!</h3>
-<div class="nav-container">
-  <ul class="">
-    <li><a href="#/favorites">My Favorites</a></li>
-    <li><a ng-click="logout()">Signout</a></li>
-  </ul>
+<div class="section-head">
+  <h3>Searches</h3>
+  <div class="nav-container">
+    <div class='favorites'><a href="#/favorites">Bookmarked</a></div>
+    <div class="logout"><a ng-click="logout()">Signout</a></div>
+  </div>
 </div>
 
 <div ng-controller="searchController" class="panel panel-default panel-fluid">
@@ -12,7 +12,7 @@
   <div class="search-container"> 
     <form name="yelp" class="search">
       <label for="category">Category:</label>
-      <input name="yelpTerm" id="category" ng-model="term">
+        <input name="yelpTerm" id="category" ng-model="term">
       <label for="city">City:</label>
       <input name="yelpLocation" id="city" ng-model="location">
       <button ng-click="yelpSearch(term, location)">Search</button> 
@@ -29,7 +29,7 @@
   <!-- SEARCH RESULTS -->
   <div class="results-container">
     <div class="business-card" ng-dblclick="saveFavorite(business)" ng-click=(showDescription(business)) ng-repeat="business in businesses | filter:userSearch ">
-      <ul class="list-group">
+      <div class="list-group">
         <div class="business-name">{{ business.name }}</div>
         <div class="business-images"> 
           <img ng-src="{{ business.image_url }}">          
@@ -38,11 +38,13 @@
         <div class="business-categories" ng-repeat="category in business.categories">
           {{ category[0] }}
         </div>
-        <div class="busines-address">
+        <div class="business-address">
           <div class="display_address" ng-repeat="line in business.location.display_address">
-            <div class="address_line">{{ line }}</div>
+            <div class="address_line">
+              {{ line }}<br>
+            </div>
           </div>
         </div>
-      </ul>
+      </div>
     </div>
 </div>

@@ -9,7 +9,6 @@ angular.module('search', [])
 
   $scope.showDescription = function (business) {
     var description = business.snippet_text;
-    console.log(description);
   };
 
   $scope.yelpSearch = function (term, location) {
@@ -21,7 +20,7 @@ angular.module('search', [])
 
   $scope.saveFavorite = function (business) {
     var bizCategories = [];
-    console.log(business.id);
+    console.log(business.id, 'SElECTED!!!');
     business.categories.forEach(function(item) {
       bizCategories.push(item[0]);
     });
@@ -35,7 +34,6 @@ angular.module('search', [])
     };
     serverRequests.saveFavorite(favBiz);
   };
-
 });
 
 

@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html ng-app='app'>
 <head>
-  <title>My Favorite Restaurants</title>
+  <title>Bookmark My Food</title>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="styles/styles.css"/>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
-</head>
-<body>
-  <h1 class="logo">My Favorite Restaurants</h1>
-  <div ng-view></div>
-
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="app/search/search.js"></script>
   <script src="app/services/services.js"></script>
   <script src="app/favorites/favorites.js"></script>
   <script src="app/signup/signup.js"></script>
   <script src="app/login/login.js"></script>
   <script src="app/app.js"></script>
+</head>
+<body>
+  <div class="nav">
+    <h1 class="logo">Bookmark My Food</h1>
+  </div>
+  <div ui-view></div>
 </body>
 </html>
