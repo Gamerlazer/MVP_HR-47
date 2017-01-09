@@ -2,15 +2,15 @@
 Bookmarking platform to save and organize your must try restaurants
 
 ## Table of Content
-* Set up 
-* Screenshots
+1. Set-up 
+1. Screenshots
 
 ## Set-Up
-Navigate to client folder:
+- Navigate to client folder:
 `bower install`
-Navigate to server folder
+- Navigate to server folder
 `npm install`
-Launch server `node server.js`
+- Launch server `node server.js`
 
 ## Screenshots
 
